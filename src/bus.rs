@@ -168,33 +168,102 @@ pub mod bus_services {
     #[derive(Debug, Clone, PartialEq, Deserialize)]
     #[serde(rename_all = "PascalCase")]
     pub struct BusService {
+        /// Original response returns a string
+        ///
+        /// Represents the bus service no
         pub service_no: String,
 
+        /// Original response returns a string
+        ///
+        /// Represents the bus operator
         pub operator: Operator,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `Direction`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents the bus service no
         #[serde(rename = "Direction")]
         pub no_direction: u32,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `Category`
+        ///
+        /// Deserialized to: `BusCategory` enum
+        ///
+        /// Represents the bus category
         pub category: BusCategory,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `OriginCode`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents where the bus originates from
         #[serde(deserialize_with = "from_str")]
         pub origin_code: u32,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `DestinationCode`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents where bus is going to
         #[serde(deserialize_with = "from_str", rename = "DestinationCode")]
         pub dest_code: u32,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `AM_Peak_Freq`
+        ///
+        /// Deserialized to: `BusFreq`
+        ///
+        /// Represents the min and max time the bus will take to come at this timing
         #[serde(rename = "AM_Peak_Freq", deserialize_with = "from_str_to_bus_freq")]
         pub am_peak_freq: BusFreq,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `AM_Offpeak_Freq`
+        ///
+        /// Deserialized to: `BusFreq`
+        ///
+        /// Represents the min and max time the bus will take to come at this timing
         #[serde(rename = "AM_Offpeak_Freq", deserialize_with = "from_str_to_bus_freq")]
         pub am_offpeak_freq: BusFreq,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `PM_Peak_Freq`
+        ///
+        /// Deserialized to: `BusFreq`
+        ///
+        /// Represents the min and max time the bus will take to come at this timing
         #[serde(rename = "PM_Peak_Freq", deserialize_with = "from_str_to_bus_freq")]
         pub pm_peak_freq: BusFreq,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `PM_Offpeak_Freq`
+        ///
+        /// Deserialized to: `BusFreq`
+        ///
+        /// Represents the min and max time the bus will take to come at this timing
         #[serde(rename = "PM_Offpeak_Freq", deserialize_with = "from_str_to_bus_freq")]
         pub pm_offpeak_freq: BusFreq,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `PM_Offpeak_Freq`
+        ///
+        /// Deserialized to: `Option<String>`
+        ///
+        /// Describes the loop the bus has, can be a `None`
         pub loop_desc: Option<String>,
     }
 
