@@ -19,7 +19,7 @@ mod tests {
     use std::env;
 
     use crate::{bus, crowd, taxi, traffic, train};
-    use crate::client_config::CLIENT_CONFIG;
+    use crate::client_config::{CLIENT_CONFIG, CLIENT_CONFIG_POOL};
     use crate::crowd::passenger_vol::VolType;
     use crate::traffic::carpark_avail::Carpark;
     use crate::traffic::traffic_speed_bands::TrafficSpeedBand;
@@ -221,10 +221,15 @@ mod tests {
     #[test]
     fn get_bike_parking() {
         let api_key = env::var("API_KEY").unwrap();
-        CLIENT_CONFIG.lock().unwrap().with_api_key(api_key.as_str());
+        CLIENT_CONFIG_POOL.get(0)
+            .unwrap()
+            .lock()
+            .unwrap()
+            .with_api_key(api_key.as_str());
 
         let resp =
             traffic::get_bike_parking(1.364897, 103.766094, 0.5);
+
         match resp {
             Ok(r) => println!("{:?}", r),
             Err(e) => println!("{:?}", e)
