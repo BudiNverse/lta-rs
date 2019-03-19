@@ -9,6 +9,7 @@ pub struct ClientConfig {
 lazy_static! {
     /// ClientConfig is in a Mutex
     pub static ref CLIENT_CONFIG: Mutex<ClientConfig> = Mutex::new(ClientConfig::new());
+    pub static ref CLIENT_CONFIG_POOL: Vec<Mutex<ClientConfig>> = vec![Mutex::new(ClientConfig::new())];
 }
 
 impl ClientConfig {
