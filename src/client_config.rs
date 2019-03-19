@@ -7,6 +7,7 @@ pub struct ClientConfig {
 }
 
 lazy_static! {
+    /// ClientConfig is in a Mutex
     pub static ref CLIENT_CONFIG: Mutex<ClientConfig> = Mutex::new(ClientConfig::new());
 }
 
