@@ -85,13 +85,6 @@ Version 0.1
 - All endpoints that are available from lta datamall website
 - Configuration using API
 
-### Todo (excluding bugs from issues)
-- [ ] Proper date types
-- [ ] Utils cleanup
-- [ ] Host on crates.io
-- [ ] Allow for [multiple clients](https://github.com/BudiNverse/lta-rs/issues/4)
-- [ ] Static website to showcase project
-
 ### License
 lta-rs is licensed under MIT license (LICENSE-MIT or http://opensource.org/licenses/MIT)
 
