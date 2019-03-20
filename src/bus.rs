@@ -301,36 +301,106 @@ pub mod bus_routes {
     #[derive(Debug, Clone, PartialEq, Deserialize)]
     #[serde(rename_all = "PascalCase")]
     pub struct BusRoute {
+        /// Original resp type: `String`
+        ///
+        /// Original name: `ServiceNo`
+        ///
+        /// Represents bus service no
         pub service_no: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `Operator`
+        ///
+        /// Deserialized to: `Operator`
+        ///
+        /// Represents the bus operator
         pub operator: Operator,
 
+        /// Original resp type: `number`
+        ///
+        /// Original name: `Direction`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents the direction the bus is going
         pub direction: u32,
 
+        /// Original resp type: `number`
+        ///
+        /// Original name: `StopSequence`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents the bus stop sequence
         #[serde(rename = "StopSequence")]
         pub stop_seq: u32,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `BusStopCode`
+        ///
+        /// Deserialized to: `u32`
+        ///
+        /// Represents bus stop code
         #[serde(deserialize_with = "from_str")]
         pub bus_stop_code: u32,
 
+        /// Original resp type: `number`
+        ///
+        /// Original name: `Distance`
+        ///
+        /// Deserialized to: `f64`
+        ///
+        /// Represents the distance this bus stop is from the previous bus stop
         #[serde(rename = "Distance")]
         pub dist: f64,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `WD_FirstBus`
+        ///
+        /// Represents when the first bus arrives on a weekday on this bus stop
         #[serde(rename = "WD_FirstBus")]
         pub wd_first: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `WD_LastBus`
+        ///
+        /// Represents when the last bus arrives on a weekday on this bus stop
         #[serde(rename = "WD_LastBus")]
         pub wd_last: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `SAT_FirstBus`
+        ///
+        /// Represents when the first bus arrives on saturday on this bus stop
         #[serde(rename = "SAT_FirstBus")]
         pub sat_first: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `SAT_LastBus`
+        ///
+        /// Represents when the last bus arrives on Saturday on this bus stop
         #[serde(rename = "SAT_LastBus")]
         pub sat_last: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `SUN_FirstBus`
+        ///
+        /// Represents when the first bus arrives on Sunday on this bus stop
         #[serde(rename = "SUN_FirstBus")]
         pub sun_first: String,
 
+        /// Original resp type: `String`
+        ///
+        /// Original name: `SUN_LastBus`
+        ///
+        /// Represents when the last bus arrives on Sunday on this bus stop
         #[serde(rename = "SUN_LastBus")]
         pub sun_last: String,
     }
