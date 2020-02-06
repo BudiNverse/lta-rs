@@ -65,7 +65,7 @@ pub use lta_blocking as blocking;
 #[cfg(feature = "async")]
 pub use lta_async as r#async;
 
-#[cfg(feature = "async_experimental")]
+#[cfg(feature = "lta_async_experimental")]
 pub use lta_async_experimental as experimental;
 
 pub use lta_models as models;
