@@ -26,12 +26,14 @@ name = "lta"
 [features]
 async = ["lta_async"]
 blocking = ["lta_blocking"]
+async_experimental = ["lta_async_experimental"]
 
 [dependencies]
 lta_async = { version = "0.2.0", optional = true }
 lta_blocking = { version = "0.2.0", optional = true }
 lta_models = { version = "0.2.0", optional = false }
 lta_utils_commons = { version = "0.2.0", optional = false }
+lta_async_experimental = { package = "lta_async", path = "./lta_async", optional = true }
 
 [workspace]
 members = [
