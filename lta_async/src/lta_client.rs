@@ -69,6 +69,7 @@ impl Client<AsyncClient, AsyncReqBuilder> for LTAClient {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct AsyncLTAClient {
     api_key: String,
     client: AsyncClient,
