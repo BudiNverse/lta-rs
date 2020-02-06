@@ -1,8 +1,12 @@
 //! Client for interacting with LTA API
-use lta_utils_commons::reqwest::{Client as AsyncClient, RequestBuilder as AsyncReqBuilder};
+use lta_utils_commons::reqwest::{
+    Client as AsyncClient, RequestBuilder as AsyncReqBuilder, Response,
+};
 
-use lta_utils_commons::Client;
-
+use crate::utils::Client as ExperimentalClient;
+use async_trait::async_trait;
+use lta_utils_commons::serde::Serialize;
+use lta_utils_commons::{Client, LTAError};
 /// A `Client` to make requests with
 /// The `Client` holds a connection pool internally, so it is advised that you create one and reuse it
 /// There are some instance where you might need to customise your client due to certain limitations.
@@ -62,5 +66,25 @@ impl Client<AsyncClient, AsyncReqBuilder> for LTAClient {
     fn get_req_builder(&self, url: &str) -> AsyncReqBuilder {
         let api_key = self.api_key.as_ref().expect("Empty API KEY!");
         self.client.get(url).header("AccountKey", api_key.as_str())
+    }
+}
+
+pub struct AsyncLTAClient {
+    api_key: String,
+    client: AsyncClient,
+}
+
+impl AsyncLTAClient {
+    pub fn new(api_key: String) -> Self {
+        AsyncLTAClient { api_key, client: AsyncClient::new() }
+    }
+}
+
+
+impl ExperimentalClient<AsyncReqBuilder> for AsyncLTAClient {
+    fn get_req_builder(&self, url: &str) -> AsyncReqBuilder {
+        self.client
+            .get(url)
+            .header("AccountKey", self.api_key.as_str())
     }
 }
