@@ -43,7 +43,7 @@ where
         .map(|f: T| f.into())
 }
 
-pub(crate) mod utils {
+pub mod utils {
     use async_trait::async_trait;
     use lta_models::bus::prelude::*;
     use lta_utils_commons::reqwest;
