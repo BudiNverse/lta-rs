@@ -19,7 +19,7 @@ impl LTARequest for Bus {
 }
 
 #[async_trait]
-impl<'a> BusRequests<reqwest::RequestBuilder> for Bus {
+impl BusRequests<reqwest::RequestBuilder> for Bus {
     type ClientType = AsyncLTAClient;
 
     async fn get_arrival(

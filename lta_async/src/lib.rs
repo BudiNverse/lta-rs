@@ -67,8 +67,9 @@ pub mod utils {
         };
     }
 
-    pub trait Client<RB> {
-        fn get_req_builder(&self, url: &str) -> RB;
+    pub trait Client {
+        type RequestBuilder;
+        fn get_req_builder(&self, url: &str) -> Self::RequestBuilder;
     }
 
     pub trait LTARequest {
@@ -77,7 +78,7 @@ pub mod utils {
 
     #[async_trait]
     pub trait BusRequests<RB>: LTARequest {
-        type ClientType: Client<RB>;
+        type ClientType: Client<RequestBuilder = RB>;
 
         async fn get_arrival(
             c: &Self::ClientType,
@@ -105,7 +106,7 @@ pub mod utils {
         skip: Option<u32>,
     ) -> Result<M, LTAError>
     where
-        C: Client<reqwest::RequestBuilder>,
+        C: Client<RequestBuilder = reqwest::RequestBuilder>,
         for<'de> T: serde::Deserialize<'de> + Into<M>,
     {
         let skip = skip.unwrap_or(0);
@@ -120,8 +121,8 @@ pub mod utils {
         query: F,
     ) -> Result<M, LTAError>
     where
-        C: Client<reqwest::RequestBuilder>,
-        F: FnOnce(reqwest::RequestBuilder) -> reqwest::RequestBuilder,
+        C: Client<RequestBuilder = reqwest::RequestBuilder>,
+        F: FnOnce(C::RequestBuilder) -> C::RequestBuilder,
         for<'de> T: serde::Deserialize<'de> + Into<M>,
     {
         let rb = client.get_req_builder(url);

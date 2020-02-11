@@ -82,7 +82,9 @@ impl AsyncLTAClient {
 }
 
 
-impl ExperimentalClient<AsyncReqBuilder> for AsyncLTAClient {
+impl ExperimentalClient for AsyncLTAClient {
+    type RequestBuilder = AsyncReqBuilder;
+
     fn get_req_builder(&self, url: &str) -> AsyncReqBuilder {
         self.client
             .get(url)
