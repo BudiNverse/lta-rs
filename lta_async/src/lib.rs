@@ -72,13 +72,9 @@ pub mod utils {
         fn get_req_builder(&self, url: &str) -> Self::RequestBuilder;
     }
 
-    pub trait LTARequest {
-        const BASE_URL: &'static str;
-    }
-
     #[async_trait]
-    pub trait BusRequests<RB>: LTARequest {
-        type ClientType: Client<RequestBuilder = RB>;
+    pub trait BusRequests {
+        type ClientType: Client;
 
         async fn get_arrival(
             c: &Self::ClientType,
