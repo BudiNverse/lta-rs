@@ -216,8 +216,8 @@ pub mod de {
         }
 
         let caps = CARPARK_COORDS_RE.captures(&s).unwrap();
-        let lat: f64 = caps.get(1).map_or(0.0, |m| m.as_str().parse().unwrap());
-        let long: f64 = caps.get(3).map_or(0.0, |m| m.as_str().parse().unwrap());
+        let lat = caps.get(1).map_or(0.0, |m| m.as_str().parse().unwrap());
+        let long = caps.get(3).map_or(0.0, |m| m.as_str().parse().unwrap());
 
         Ok(Some(Coordinates::new(lat, long)))
     }
@@ -250,7 +250,7 @@ pub mod de {
         D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-        T::from_str(&s).map_err(de::Error::custom)
+        T::from_str(&s).unwrap_or_else(0)
     }
 
     pub fn delimited<'de, V, T, D>(deserializer: D) -> Result<V, D::Error>
