@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["lta"] = [{"text":"impl Clone for LTAClient","synthetic":false,"types":[]},{"text":"impl Clone for LTAClient","synthetic":false,"types":[]},{"text":"impl Clone for Bus","synthetic":false,"types":[]},{"text":"impl Clone for Crowd","synthetic":false,"types":[]},{"text":"impl Clone for Taxi","synthetic":false,"types":[]},{"text":"impl Clone for Traffic","synthetic":false,"types":[]},{"text":"impl Clone for Train","synthetic":false,"types":[]},{"text":"impl Clone for Geo","synthetic":false,"types":[]},{"text":"impl Clone for Facility","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

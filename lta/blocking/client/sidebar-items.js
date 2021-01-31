@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["LTAClient","A `Client` to make requests with The `Client` holds a connection pool internally, so it is advised that you create one and reuse it There are some instance where you might need to customise your client due to certain limitations."]]});

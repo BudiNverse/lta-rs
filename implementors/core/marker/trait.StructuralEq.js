@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["lta"] = [{"text":"impl StructuralEq for Bus","synthetic":false,"types":[]},{"text":"impl StructuralEq for Crowd","synthetic":false,"types":[]},{"text":"impl StructuralEq for Taxi","synthetic":false,"types":[]},{"text":"impl StructuralEq for Traffic","synthetic":false,"types":[]},{"text":"impl StructuralEq for Train","synthetic":false,"types":[]},{"text":"impl StructuralEq for Geo","synthetic":false,"types":[]},{"text":"impl StructuralEq for Facility","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

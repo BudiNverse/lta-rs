@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["lta"] = [{"text":"impl StructuralPartialEq for Bus","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Crowd","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Taxi","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Traffic","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Train","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Geo","synthetic":false,"types":[]},{"text":"impl StructuralPartialEq for Facility","synthetic":false,"types":[]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
